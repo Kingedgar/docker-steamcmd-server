@@ -21,8 +21,8 @@ RUN mkdir $SERVER_DIR
 RUN useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
 RUN chown -R steam $DATA_DIR
 RUN groupadd startup
-RUN usermod -a G startup steam
-RUN usermod -a G startup root
+RUN usermod -a -G startup steam
+RUN usermod -a -G startup root
 
 RUN ulimit -n 2048
 
