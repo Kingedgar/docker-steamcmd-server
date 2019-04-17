@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ "$GAME_NAME" == "tf" ] ; then 
     echo "---Fetching required files for TeamFortress2---"
-    apt-get -y lib32gcc1 ia32-libs
+    apt-get -y install lib32gcc1 ia32-libs
 fi
 
 if [ ! -f ${STEAMCMD_DIR}/steamcmd.sh ]; then
