@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ "$GAME_NAME" == "tf" ] ; then 
+    echo "---Fetching required files for TeamFortress2---"
+    apt-get -y lib32gcc1 ia32-libs
+fi
+
 if [ ! -f ${STEAMCMD_DIR}/steamcmd.sh ]; then
     echo "Steamcmd not found!"
     wget -q -O ${STEAMCMD_DIR}/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz 
