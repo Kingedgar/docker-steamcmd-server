@@ -21,7 +21,7 @@ RUN mkdir $STEAMCMD_DIR
 RUN mkdir $SERVER_DIR
 
 RUN groupmod -g 1000 users
-RUN useradd -u 911 -U -d /config -s /bin/false steam
+RUN useradd -u 911 -U -d $DATA_DIR -s /bin/false steam
 RUN usermod -G users steam
 
 RUN chown -R steam $DATA_DIR
