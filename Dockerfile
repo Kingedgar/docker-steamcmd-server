@@ -21,10 +21,15 @@ RUN mkdir $SERVER_DIR
 RUN useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
 RUN chown -R steam $DATA_DIR
 
+RUN echo "steam ALL=NOPASSWD: /usr/bin/dpkg" >> /etc/sudoers
+RUN echo "steam ALL=NOPASSWD: /usr/bin/apt-get install" >> /etc/sudoers
+
 RUN ulimit -n 2048
 
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 774 /opt/scripts/
+
+USER steam
 
 #Server Start
 ENTRYPOINT ["/opt/scripts/start-server.sh"]
