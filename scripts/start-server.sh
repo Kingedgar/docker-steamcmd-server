@@ -1,8 +1,8 @@
 #!/bin/bash
 if [ "$GAME_NAME" == "tf" ] ; then 
     echo "---Fetching required files for TeamFortress2---"
-    dpkg --add-architecture i386
-    apt-get update
+    sudo dpkg --add-architecture i386
+    sudo apt-get update
     apt-get install lib32z1 libncurses5:i386 libbz2-1.0:i386 lib32gcc1 lib32stdc++6 libtinfo5:i386 libcurl3-gnutls:i386
 fi
 
