@@ -20,15 +20,15 @@ RUN mkdir $STEAMCMD_DIR
 RUN mkdir $SERVER_DIR
 RUN useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
 RUN chown -R steam $DATA_DIR
-
-RUN echo "steam ALL=NOPASSWD: /usr/bin/dpkg" >> /etc/sudoers
-RUN echo "steam ALL=NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers
+RUN groupadd startup
+RUN usermod -a G startup steam
+RUN usermod -a G startup root
 
 RUN ulimit -n 2048
 
 ADD /scripts/ /opt/scripts/
-RUN chmod -R 774 /opt/scripts/
-RUN chown -R steam /opt/scripts
+RUN chmod -R 770 /opt/scripts/
+RUN chgrp -R startup /opt/scripts/
 
 USER steam
 
