@@ -1,4 +1,7 @@
 #!/bin/bash
+UID=${UID:-911}
+GID=${GID:-911}
+
 usermod -o -u "$UID" steam
 groupmod -o -g "$GID" steam
 
