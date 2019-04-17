@@ -4,7 +4,7 @@ MAINTAINER ich777
 
 RUN dpkg --add-architecture i386
 RUN apt-get update
-RUN apt-get -y install sudo lib32gcc1 gdb libc6-i386 wget language-pack-en lib32stdc++6 lib32z1 libncurses5:i386 libbz2-1.0:i386 libtinfo5:i386 libcurl3-gnutls:i386
+RUN apt-get -y install sudo lib32gcc1 libc6-i386 wget language-pack-en lib32stdc++6
 
 ENV DATA_DIR="/serverdata"
 ENV STEAMCMD_DIR="${DATA_DIR}/steamcmd"
@@ -21,15 +21,11 @@ RUN mkdir $STEAMCMD_DIR
 RUN mkdir $SERVER_DIR
 RUN useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
 RUN chown -R steam $DATA_DIR
-RUN groupadd startup
 
 RUN ulimit -n 2048
 
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
-RUN chown -R steam /opt/scripts/
-
-USER steam
 
 #Server Start
 ENTRYPOINT ["/opt/scripts/start-server.sh"]
