@@ -5,7 +5,7 @@ GID=${GID:-911}
 usermod -o -u "$UID" steam
 groupmod -o -g "$GID" steam
 
-chown steam:steam ${SERVER_DIR}
+chown steam:steam ${DATA_DIR}
 
 if [ "$GAME_NAME" == "tf" ] ; then 
     echo "---Fetching required files for TeamFortress2---"
