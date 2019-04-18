@@ -17,7 +17,7 @@ ARG GROUP=steam
 RUN mkdir $DATA_DIR
 RUN mkdir $STEAMCMD_DIR
 RUN mkdir $SERVER_DIR
-RUN addgroup -g $GID -S $GROUP
+RUN addgroup -gid $GID -S $GROUP
 RUN useradd -u $UID -G $GROUP -s /bin/sh -SDH $USER
 
 RUN chown -R $USER:GROUP $DATA_DIR $STEAMCMD_DIR $SERVER_DIR
