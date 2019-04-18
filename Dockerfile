@@ -18,7 +18,7 @@ RUN mkdir $DATA_DIR
 RUN mkdir $STEAMCMD_DIR
 RUN mkdir $SERVER_DIR
 RUN groupadd $GROUP
-RUN useradd -u $UID -G $GROUP -s /bin/sh -SDH $USER
+RUN useradd -u $UID -G $GROUP -s /bin/sh -rM $USER
 
 RUN chown -R $USER:GROUP $DATA_DIR $STEAMCMD_DIR $SERVER_DIR
 
