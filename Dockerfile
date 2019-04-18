@@ -2,9 +2,7 @@ FROM ubuntu
 
 MAINTAINER ich777
 
-RUN dpkg --add-architecture i386
-RUN apt-get update
-RUN apt-get -y install sudo lib32gcc1 libc6-i386 wget language-pack-en lib32stdc++6
+RUN apt-get -y install sudo
 
 ENV DATA_DIR="/serverdata"
 ENV STEAMCMD_DIR="${DATA_DIR}/steamcmd"
@@ -19,12 +17,10 @@ ENV GID=100
 RUN mkdir $DATA_DIR
 RUN mkdir $STEAMCMD_DIR
 RUN mkdir $SERVER_DIR
-
-RUN groupmod -g 1000 users
-RUN useradd -u 911 -U -d $DATA_DIR -s /bin/false steam
+RUN useradd -d $DATA_DIR -s /bin/false --uid $UID --gid $GID steam
 RUN usermod -G users steam
 
-RUN chown -R steam $DATA_DIR
+RUN chown -R steam:users $DATA_DIR
 
 RUN ulimit -n 2048
 
