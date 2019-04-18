@@ -2,8 +2,6 @@ FROM ubuntu
 
 MAINTAINER ich777
 
-RUN apt-get -y install sudo
-
 ENV DATA_DIR="/serverdata"
 ENV STEAMCMD_DIR="${DATA_DIR}/steamcmd"
 ENV SERVER_DIR="${DATA_DIR}/serverfiles"
