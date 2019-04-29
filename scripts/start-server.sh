@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ ! -f ${STEAMCMD_DIR}/steamcmd.sh ]; then
     echo "SteamCMD not found!"
-    wget -q -O ${STEAMCMD_DIR}/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz 
+    wget -q -O ${STEAMCMD_DIR}/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz
     tar --directory ${STEAMCMD_DIR} -xvzf /serverdata/steamcmd/steamcmd_linux.tar.gz
     rm ${STEAMCMD_DIR}/steamcmd_linux.tar.gz
 fi
@@ -54,7 +54,4 @@ cp -R ${SERVER_DIR}/bin/* ${DATA_DIR}/.steam/sdk32/
 chmod -R 770 ${DATA_DIR}
 
 echo "---Start Server---"
-${SERVER_DIR}/srcds_run -game ${GAME_NAME} ${GAME_PARAMS} +port ${GAME_PORT}
-
-
-
+${SERVER_DIR}/srcds_run -game ${GAME_NAME} ${GAME_PARAMS} -console +port ${GAME_PORT}
