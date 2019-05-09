@@ -1,6 +1,6 @@
 FROM ubuntu
 
-MAINTAINER ich777
+MAINTAINER kingedgar
 
 RUN apt-get update
 RUN apt-get -y install lib32gcc1 libc6-i386 wget language-pack-en lib32stdc++6
@@ -13,14 +13,15 @@ ENV GAME_NAME="template"
 ENV GAME_PARAMS="template"
 ENV GAME_PORT=27015
 ENV VALIDATE=""
-ENV UID=99
-ENV GID=100
+ENV UID=1000
+ENV GID=1002
 ENV USERNAME=""
 ENV PASSWRD=""
 
 RUN mkdir $DATA_DIR
 RUN mkdir $STEAMCMD_DIR
 RUN mkdir $SERVER_DIR
+RUN groupadd --gid $GID steam
 RUN useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
 RUN chown -R steam $DATA_DIR
 
