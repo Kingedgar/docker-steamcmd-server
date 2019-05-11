@@ -2,8 +2,9 @@ FROM ubuntu
 
 MAINTAINER kingedgar
 
-RUN apt-get update
-RUN apt-get -y install lib32gcc1 libc6-i386 wget language-pack-en lib32stdc++6 gdb
+RUN apt-get update && apt-get -y install lib32gcc1 libc6-i386 wget language-pack-en lib32stdc++6 gdb
+RUN dpkg --add-architecture i386
+RUN apt-get update && apt-get -y install lib32gcc1 libstdc++6 libstdc++6:i386 libcurl4-gnutls-dev:i386
 
 ENV DATA_DIR="/serverdata"
 ENV STEAMCMD_DIR="${DATA_DIR}/steamcmd"
