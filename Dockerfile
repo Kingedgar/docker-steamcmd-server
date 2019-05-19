@@ -4,7 +4,7 @@ MAINTAINER kingedgar
 
 RUN dpkg --add-architecture i386
 RUN apt-get update
-RUN apt-get -y install wget language-pack-en lib32z1 libncurses5:i386 libbz2-1.0:i386 lib32gcc1 lib32stdc++6 libtinfo5:i386 libcurl3-gnutls:i386
+RUN apt-get -y install iproute2 iputils-ping net-tools wget language-pack-en lib32z1 libncurses5:i386 libbz2-1.0:i386 lib32gcc1 lib32stdc++6 libtinfo5:i386 libcurl3-gnutls:i386
 
 ENV DATA_DIR="/serverdata"
 ENV STEAMCMD_DIR="${DATA_DIR}/steamcmd"
