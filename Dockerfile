@@ -2,7 +2,7 @@ FROM ubuntu
 
 MAINTAINER kingedgar
 
-RUN dpkg --add-architecture i386 && apt-get update && apt-get -y install gdb wget language-pack-en lib32z1 libncurses5:i386 libbz2-1.0:i386 lib32gcc1 lib32stdc++6 libtinfo5:i386 libcurl3-gnutls:i386 libstdc++6:i386 libcurl4-gnutls-dev:i386 
+RUN dpkg --add-architecture i386 && apt-get update && apt-get -y install iproute2 iputils-ping net-tools gdb wget language-pack-en lib32z1 libncurses5:i386 libbz2-1.0:i386 lib32gcc1 lib32stdc++6 libtinfo5:i386 libcurl3-gnutls:i386 libstdc++6:i386 libcurl4-gnutls-dev:i386 
 
 ENV DATA_DIR="/serverdata"
 ENV STEAMCMD_DIR="${DATA_DIR}/steamcmd"
@@ -18,8 +18,7 @@ ENV USERNAME=""
 ENV PASSWRD=""
 
 RUN mkdir $DATA_DIR && mkdir $STEAMCMD_DIR && mkdir $SERVER_DIR
-RUN groupadd --gid $GID steam && useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
-RUN chown -R steam $DATA_DIR
+RUN groupadd --gid $GID steam && useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam &&chown -R steam $DATA_DIR
 
 RUN ulimit -n 2048
 
